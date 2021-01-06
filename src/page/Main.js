@@ -2,19 +2,27 @@ import React, { useState } from 'react';
 import { LogoutButton, TodoAddButton, TodoMinusButton } from '../component/BaseButton';
 import { TodoInput } from '../component/BaseInput';
 import { LoginCheck, TodoListCheck } from '../component/BaseHtag';
+import { CurrentTime } from '../component/BaseTime';
 import styled from 'styled-components';
 
 export const Main = (props) => {
     const [ TodoList, SetTodoList ] = useState([
-        {id :1, contents: '운동하기', completed: false},
-        {id :2, contents: '소프트웨어 공부하기', completed: false},
+        {id :1, contents: '운동하기', time: CurrentTime(), completed: false},
+        {id :2, contents: '소프트웨어 공부하기', time: CurrentTime(), completed: false},
     ]);
     const [ TodoContents, SetTodoContents ] = useState('');
 
+
     const TodoListAdd = (e) => {
-        const addTodo = [ ...TodoList, {id: TodoList[TodoList.length - 1].id + 1, contents: TodoContents, time: HandleDateAndTime(), completed: false}];
+        const addTodo = [ ...TodoList, 
+            {
+              id: TodoList.length < 1 ? TodoList.id = 1 : TodoList[TodoList.length - 1].id + 1,
+              contents: TodoContents, 
+              time: CurrentTime(), 
+              completed: false
+            }
+        ];
         // 데이터 추가해주는 부분, length + 1 부분 수정하기 삭제하고 다시 만들때 id값이 고유값이 안됨
-    
         SetTodoList(addTodo);        
     }
 
@@ -34,17 +42,7 @@ export const Main = (props) => {
         SetTodoList(deleteTodo);
     }
 
-    const HandleDateAndTime = () => {
-        let today = new Date();   
-        let year = today.getFullYear(); // 년도
-        let month = today.getMonth() + 1;  // 월
-        let date = today.getDate();  // 날짜
-        let hours = today.getHours(); // 시
-        let minutes = today.getMinutes();  // 분
-        let seconds = today.getSeconds();  // 초
-        return `${year}/${month}/${date} ${hours} : ${minutes} : ${seconds}`; 
-    }
-
+    
     return (
         <>
             <LoginCheck>
@@ -62,7 +60,8 @@ export const Main = (props) => {
             {TodoList.map(todo => {
                 return  <ul key={todo.id}>
                             <li>
-                                {todo.contents} {todo.time} <TodoMinusButton onClick={() => TodoListMinus(todo.id)}> - </TodoMinusButton>
+                                {todo.contents} {todo.time} 
+                                <TodoMinusButton onClick={() => TodoListMinus(todo.id)}> - </TodoMinusButton>
                             </li>
                         </ul>
             })}  
