@@ -34,3 +34,7 @@ export const TodoAddButton = styled.button`
     font-size: 18px;
     font-family: "Noto Sans KR", "Roboto", "APPLE SD Gothic NEO", sans-serif, helvetica;
 `
+
+export const TodoMinusButton = styled.button`
+    
+`
