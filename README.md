@@ -3,3 +3,4 @@
 3. TodoList 추가 기능
 4. TodoList 옆에 시간이 뜨는 기능
 5. 현재 Todo의 갯수가 뜨는 기능
+6. TodoList 삭제 기능
