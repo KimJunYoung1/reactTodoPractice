@@ -24,17 +24,25 @@ export const LogoutButton = styled.button`
     border: none;
 `;
 
-export const TodoAddButton = styled.button`
+export const TodoAddDiv = styled.span`
     position: absolute;
-    top: 200px;
-    left: 1100px;
-    border: 1px solid #1A7CFF;
-    height: 33px;
-    background-color: yellow;
-    font-size: 18px;
-    font-family: "Noto Sans KR", "Roboto", "APPLE SD Gothic NEO", sans-serif, helvetica;
-`
+    right: 35px;
+    top: 172px;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background: #22b8cf;
+    border-radius: 3px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+
+ `
 
 export const TodoMinusButton = styled.button`
-    
+    background: white;
+    border: none;
+    color: red;
+    cursor: pointer;   
 `

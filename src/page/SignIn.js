@@ -48,8 +48,8 @@ export const SignIn = () => {
     const handleClickLogout = () => {
         alert('로그아웃 되었습니다');
         setUserName(null);
-        // setUserId('');
-        // setUserPassword('');
+        setUserId('');
+        setUserPassword('');
     }    
 
     return (

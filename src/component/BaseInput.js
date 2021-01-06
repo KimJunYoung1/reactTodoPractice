@@ -18,11 +18,10 @@ export const InputRapper = styled.div`
 `;
 
 export const TodoInput = styled.input`
-    position: absolute;
-    top: 200px;
-    width: 500px;
-    height: 30px;    
-    border: 1px solid #1A7CFF;
-    font-size: 18px;
-    font-family: "Noto Sans KR", "Roboto", "APPLE SD Gothic NEO", sans-serif, helvetica;
+    text-align: center;
+    font-size: 1.25rem;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #c5f6fa;     
+    
 `;

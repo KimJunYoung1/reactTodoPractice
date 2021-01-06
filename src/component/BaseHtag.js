@@ -11,6 +11,10 @@ export const LoginCheck = styled.h3`
 `
 
 export const TodoListCheck = styled.h2`
-    position: absolute;
-    top: 100px;
+    padding: 2rem;
+    font-size: 2.5rem;
+    text-align: center;
+    font-weight: 100;
+    background: #22b8cf;
+    color: white;
 `

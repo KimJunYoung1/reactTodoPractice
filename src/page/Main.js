@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { LogoutButton, TodoAddButton, TodoMinusButton } from '../component/BaseButton';
+import { LogoutButton, TodoAddDiv, TodoMinusButton } from '../component/BaseButton';
 import { TodoInput } from '../component/BaseInput';
 import { LoginCheck, TodoListCheck } from '../component/BaseHtag';
 import { CurrentTime } from '../component/BaseTime';
@@ -49,22 +49,29 @@ export const Main = (props) => {
                 {props.name}님 환영합니다.
             </LoginCheck>
             <LogoutButton onClick={props.handleClick}>로그아웃</LogoutButton>
-            <TodoListCheck>
-                {props.name}님의 투두리스트                
-            </TodoListCheck>          
-            <TodoInput placeholder='What do you want to do today?' onChange={TodoEvent} onKeyPress={HandleEnterAddTodo} />
-            <TodoAddButton onClick={TodoListAdd}>
-                추가
-            </TodoAddButton>
-            <TodoCount> 해야할일 {TodoList.length}개</TodoCount>                
-            {TodoList.map(todo => {
-                return  <ul key={todo.id}>
-                            <li>
-                                {todo.contents} {todo.time} 
-                                <TodoMinusButton onClick={() => TodoListMinus(todo.id)}> - </TodoMinusButton>
-                            </li>
-                        </ul>
-            })}  
+            <TodoForm>
+                <TodoWhoForm>
+                    <TodoListCheck>
+                        {props.name}님의 투두리스트                
+                    </TodoListCheck>          
+                    <TodoInput placeholder='What do you want to do today?' onChange={TodoEvent} onKeyPress={HandleEnterAddTodo} />               
+                
+                    <TodoAddDiv onClick={TodoListAdd}>
+                        추가
+                    </TodoAddDiv>
+                </TodoWhoForm>
+                <TodoCount> 해야할일 {TodoList.length}개</TodoCount> 
+                <TodoListForm>               
+                    {TodoList.map(todo => {
+                        return  <ul key={todo.id}>
+                                    <li>
+                                        {todo.contents} {todo.time} 
+                                        <TodoMinusButton onClick={() => TodoListMinus(todo.id)}> X </TodoMinusButton>
+                                    </li>
+                                </ul>
+                    })}  
+                </TodoListForm>
+            </TodoForm>
         </>
     )
 }
@@ -72,4 +79,21 @@ export const Main = (props) => {
 const TodoCount = styled.div`
     margin: 30px;
     font-size: 30px;
+`
+const TodoForm = styled.form`
+    background: white;
+    width: 512px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); 
+    margin: 0 auto; 
+    margin-top: 4rem;
+`
+
+const TodoWhoForm = styled.div`
+    display: flex;
+    flex-direction: column;
+    position: relative;
+`
+
+const TodoListForm = styled.section`
+    min-height: 5rem;
 `
